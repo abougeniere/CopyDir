@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 
 /*
@@ -78,20 +79,21 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        boolean success = true;
         
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy HHmmss").format(Calendar.getInstance().getTime());
-        
+
         String sourceDirName = "test";
         String destDirName = "..\\wgirafe898 OLD version\\testcopy";
-        
-        
+
         File srcDir = new File(sourceDirName);
         File destDir = new File(destDirName);
-        
+
         // Renomme repertoire destination
         File file = new File(destDirName);
         file.renameTo(new File(destDirName + " " + timeStamp));
-    
+
         // copie repertoire source > destination
         try
         {
@@ -99,10 +101,15 @@ public class NewJFrame extends javax.swing.JFrame {
         } catch (IOException ex)
         {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erreur : " + ex, "Erreur..", JOptionPane.ERROR_MESSAGE);
+            success = false;
         }
-        
-        
-        //
+
+        // Copie terminée
+        if (success == true)
+        {
+        JOptionPane.showMessageDialog(null, "Copie terminée.", "Copie terminée", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -143,7 +150,7 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
-                
+
             }
         });
     }
