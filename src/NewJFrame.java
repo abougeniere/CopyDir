@@ -1,6 +1,8 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.io.FileUtils;
@@ -21,6 +23,7 @@ public class NewJFrame extends javax.swing.JFrame {
      */
     public NewJFrame() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -75,8 +78,21 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        File srcDir = new File("test");
-        File destDir = new File("testCopy");
+        
+        String timeStamp = new SimpleDateFormat("dd-MM-yyyy HHmmss").format(Calendar.getInstance().getTime());
+        
+        String sourceDirName = "test";
+        String destDirName = "..\\wgirafe898 OLD version\\testcopy";
+        
+        
+        File srcDir = new File(sourceDirName);
+        File destDir = new File(destDirName);
+        
+        // Renomme repertoire destination
+        File file = new File(destDirName);
+        file.renameTo(new File(destDirName + " " + timeStamp));
+    
+        // copie repertoire source > destination
         try
         {
             FileUtils.copyDirectory(srcDir, destDir);
@@ -85,6 +101,8 @@ public class NewJFrame extends javax.swing.JFrame {
             Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
+        //
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -125,6 +143,7 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
+                
             }
         });
     }
