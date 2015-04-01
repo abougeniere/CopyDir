@@ -50,29 +50,29 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel1.setText("<html>Cliquez sur le bouton Copie pour copier<br>  les données de  la nouvelle version de girafe (répertoire DATA)<br>vers l'ancienne version.</html>");
+        jLabel1.setText("<html>\n<b>Pour copier les données de girafe vers l'ancienne version :</b><br><br>- Assurez vous que personne n'est connecté à girafe,<br>- Cliquez sur le bouton Copie<br>\n</html>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                .addGap(155, 155, 155))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -84,8 +84,8 @@ public class NewJFrame extends javax.swing.JFrame {
         
         String timeStamp = new SimpleDateFormat("dd-MM-yyyy HHmmss").format(Calendar.getInstance().getTime());
 
-        String sourceDirName = "test";
-        String destDirName = "..\\wgirafe898 OLD version\\testcopy";
+        String sourceDirName = "data";
+        String destDirName = "..\\wgirafe898 OLD version\\data";
 
         File srcDir = new File(sourceDirName);
         File destDir = new File(destDirName);
@@ -150,7 +150,6 @@ public class NewJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewJFrame().setVisible(true);
-
             }
         });
     }
